@@ -1,0 +1,8 @@
+{
+  "name": "myfeed",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "ionic-angular",
+  "app_id": ""
+}
