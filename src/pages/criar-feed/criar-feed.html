@@ -16,11 +16,11 @@
 <ion-content>
       <ion-item >
           <ion-label color="primary" floating>Título</ion-label>
-          <ion-input [(ngModel)]="feed.titulo"></ion-input>
+          <ion-input [(ngModel)]="feed.titulo" ></ion-input>
       </ion-item>    
 
       <button *ngIf="!editandoFeed" ion-button (click)="cadastrardados()" aling-items="center">Cadastrar</button>
-      <button *ngIf="editandoFeed" ion-button (click)="atualizardados()">Atualizar</button>
+      <button *ngIf="editandoFeed" ion-button (click)="exibirEditando(feed)">Atualizar</button>
       <button *ngIf="editandoFeed" ion-button (click)="cancelardados()">Cancelar</button>
 
       

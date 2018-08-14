@@ -18,6 +18,7 @@ export class HomePage {
   feed:IFeed = {titulo:''}
   lista:IFeed[];
   editandoFeed: boolean = false;
+  key:any = "lista";
  
   //cadastroTituloFeed:any;
 
@@ -26,6 +27,15 @@ export class HomePage {
               public storage: Storage,
               public feedsProvider: FeedsProvider,
               ) {
+                this.storage.ready().then(() =>{
+                  storage.get(this.key).then((dadosFeeds) => {
+                    if(dadosFeeds){
+                      this.lista = dadosFeeds;
+                    }else {
+                      this.lista = [];
+                    }
+                  })      
+                })   
      
 
   }
@@ -34,15 +44,25 @@ export class HomePage {
   }
 
   goEdite(feed:IFeed){
-    if(this.feed.titulo != ""){
-      this.feed = feed.titulo;
-      this.editandoFeed = true;
-      this.navCtrl.setRoot(CriarFeedPage);
+    
+    this.feed = {titulo:this.feed};
+    this.editandoFeed = false;
+   
+    if( this.feed != {titulo: feed.titulo} &&  this.editandoFeed == false){      
+     
+     this.navCtrl.setRoot(CriarFeedPage,{
+      editandoFeed: true,
+     }); 
+     console.log(feed)     
     }else{
       alert("Não foi possível editar no momento. Tente mais tarde");
     }
     
     
+  }
+  deletar(feed:IFeed){
+    this.feedsProvider.deletarFeed(feed);
+    console.log(feed);
   }
   gocriarfeed(){
     this.navCtrl.setRoot(CriarFeedPage)

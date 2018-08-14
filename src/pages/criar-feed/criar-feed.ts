@@ -29,6 +29,12 @@ export class CriarFeedPage {
   ionViewDidLoad() {
     this.lista = this.feedsProvider.listar();
   }
+
+  exibirEditando(feed:IFeed){
+    this.feed = {titulo:this.feed};
+    this.editandoFeed = true;
+
+  }
   
   cadastrardados(){
     if(this.feed.titulo != ""){
@@ -44,7 +50,7 @@ export class CriarFeedPage {
 
   atualizardados(){
   
-        
+         
   }
 
   cancelardados(){

@@ -30,5 +30,14 @@ export class FeedsProvider {
     })
   }
 
+  deletarFeed(feed){
+    for(let key in this.lista){
+      if(this.lista[key] == feed){
+        this.lista.splice(parseInt(key),1);
+        this.storage.set(this.key, this.lista)
+      }
+    }
+  }
+
 
 }

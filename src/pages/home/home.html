@@ -7,16 +7,16 @@
 </ion-header>
 
 <ion-content >
-
+  <ion-content class="cards">
     <ion-card *ngFor="let feed of lista" >
         <ion-card-header class="barratitulo" item-start>
           {{feed.titulo}}
-          <ion-icon name="arrow-dropright-circle" icon-end class="icone"></ion-icon>
+          <ion-icon name="arrow-dropright-circle" icon-start right></ion-icon>
         </ion-card-header> 
     
-        <ion-card-content class="barraFeed" align-items-center>
-            <ion-row>
-              <ion-col>
+         
+            <ion-row class="barraFeed">
+              <ion-col >
                   <button ion-button icon-start clear small (click)="goEdite(feed)">
                     <ion-icon name="create"></ion-icon>
                     <div>Editar</div>
@@ -24,29 +24,20 @@
               </ion-col>
               <ion-col>
                   <button ion-button icon-start clear small>
-                    <ion-icon name="trash"></ion-icon>
+                    <ion-icon name="trash" (click)="deletar(feed)"></ion-icon>
                     <div>Remover</div>
                   </button>
               </ion-col>
             </ion-row>
-
-
-            <ion-grid>
-              <ion-row align-items-center> 
-                  <ion-col >
-                    <ion-icon name="person" icon-end></ion-icon> Remover
-                  </ion-col>
-              </ion-row>
-            </ion-grid>
-        </ion-card-content>  
       </ion-card>
+    </ion-content>
 
 
-  <ion-fab bottom right >
+  <ion-fab bottom right class="icone">
     <button ion-fab color="dark">
         <ion-icon name="add"></ion-icon>
-    </button>
-      <ion-fab-list side="left">     
+    </button >
+      <ion-fab-list side="left" >     
                   
           <button ion-fab (click)="gocriarfeed()" ><ion-icon name="add"></ion-icon>
           </button> <div> Feeds</div>
