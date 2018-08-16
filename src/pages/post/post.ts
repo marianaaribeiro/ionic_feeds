@@ -36,7 +36,6 @@ export class PostPage {
                   })      
                 })   
   }
-
   
   ionViewDidEnter() {
     this.posts = this.postpvProvider.listar();

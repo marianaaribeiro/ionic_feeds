@@ -15,12 +15,13 @@
         <ion-input type="text" color="dark" [(ngModel)]="post.titulo" placeholder="Título da Post"></ion-input>
       </ion-item>
       <ion-item>
-        <ion-input type="text"  color="dark" [(ngModel)]="post.descricao" placeholder="Descrição"></ion-input>
+        <ion-textarea  type="text"  color="dark" [(ngModel)]="post.descricao" placeholder="Descrição"></ion-textarea>
       </ion-item>
-      
-      <button *ngIf="!editandopost" ion-button class="btn2" block color="dark" round (click)="adicionarpost()">Adicionar</button>
-      <button *ngIf="editandopost" ion-button  class="btn1" color="dark" round (click)="atualizarpost()">Atualizar</button>
-      <button *ngIf="editandopost" ion-button  class="btn1" color="dark" round (click)="cancelarEditacaopost()">Cancelar</button>
+      <div text-center>
+        <button *ngIf="!editandopost" ion-button class="btn2" block color="dark" round (click)="adicionarpost()">Adicionar</button>
+        <button *ngIf="editandopost" ion-button  class="btn1" color="dark" round (click)="atualizarpost()">Atualizar</button>
+        <button *ngIf="editandopost" ion-button  class="btn1" color="dark" round (click)="cancelarEditacaopost()">Cancelar</button>
+      </div>
     </ion-content> 
     <!--Conteúdo-->
     <ion-content class="cards">
@@ -38,8 +39,8 @@
                       <div>Editar</div>
                     </button>
                 </ion-col>
-                <ion-col>
-                    <button *ngIf="editandopost" ion-button icon-start clear small color="light" (click)="deletarpost(post)">
+                <ion-col text-right>
+                    <button *ngIf="editandopost"  ion-button icon-start clear small color="light" (click)="deletarpost(post)">
                       <ion-icon name="trash" ></ion-icon>
                       <div>Remover</div>
                     </button>

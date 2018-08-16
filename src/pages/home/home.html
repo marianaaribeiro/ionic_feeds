@@ -22,9 +22,11 @@
           <ion-input type="text" color="dark" [(ngModel)]="feed.titulo" placeholder="Título da Feed"></ion-input>
         </ion-item>
       </ion-list>
+      <div text-center>     
       <button *ngIf="!editandofeed" ion-button block color="dark" round (click)="adicionarFeed()">Adicionar</button>
       <button *ngIf="editandofeed" ion-button  class="btn1" color="dark" round (click)="atualizarFeed()">Atualizar</button>
       <button *ngIf="editandofeed" ion-button  class="btn1" color="dark" round (click)="cancelarEditacaoFeed()">Cancelar</button>
+      </div>
     </ion-content>
     <!--conteúdo--> 
     <ion-content class="cards">
@@ -40,7 +42,7 @@
                       <div>Editar</div>
                     </button>
                 </ion-col>
-                <ion-col>
+                <ion-col text-right>
                     <button *ngIf="editandofeed" ion-button icon-start clear small color="light"  (click)="deletarFeed(feed)">
                       <ion-icon name="trash" ></ion-icon>
                       <div>Remover</div>
