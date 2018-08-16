@@ -1,27 +1,32 @@
 page-home {
     .barraFeed{
-        background: rgb(7, 6, 6);
+        background: rgb(3, 3, 3);
         height: 43px;
         align-items: center;
-
+        color: azure;
     }
     .barratitulo{
         font-size: 30px;
-        height: 80px;
-        text-align: left;
-             
+        height: 85px;
+        background: rgba(224, 231, 229, 0.507)
     }
-    .icone{
-        align-items: flex-start;
-        flex: 1;
-        
-        height: 13%;
+    .inputsfeed{
+        margin-top: 10px;       
+        height: 20%;
     }
-    .cards{
-      flex: 4;
-      height: 80%;
-      
+    .cards{     
+      height: 80%;      
     }
-    
+    .iconeseta{
+        float: right;
+        position: relative;
+        margin-top: 15px;
+    }  
+    .btn1{
+        float:left;
+        position: relative;
+        margin-left: 35px;
+       
+    }
 
 }

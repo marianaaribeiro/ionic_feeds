@@ -8,8 +8,9 @@ import { HttpClientModule } from '@angular/common/http';
 
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
-import { CriarFeedPage } from '../pages/criar-feed/criar-feed';
 import { FeedsProvider } from '../providers/feeds/feeds';
+import { PostpvProvider } from '../providers/postpv/postpv';
+import { PostPage } from '../pages/post/post';
 
 
 
@@ -18,7 +19,7 @@ import { FeedsProvider } from '../providers/feeds/feeds';
   declarations: [
     MyApp,
     HomePage,
-    CriarFeedPage,
+    PostPage,
     
   
   ],
@@ -36,14 +37,15 @@ import { FeedsProvider } from '../providers/feeds/feeds';
   entryComponents: [
     MyApp,
     HomePage,
-    CriarFeedPage,
+    PostPage,
   ],
   providers: [
     StatusBar,
     SplashScreen,
     FeedsProvider,
-    
+    PostpvProvider,   
     {provide: ErrorHandler, useClass: IonicErrorHandler},
+    
     
   ]
 })

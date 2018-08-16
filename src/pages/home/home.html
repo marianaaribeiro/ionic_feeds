@@ -7,46 +7,38 @@
 </ion-header>
 
 <ion-content >
-  <ion-content class="cards">
-    <ion-card *ngFor="let feed of lista" >
-        <ion-card-header class="barratitulo" item-start>
-          {{feed.titulo}}
-          <ion-icon name="arrow-dropright-circle" icon-start right></ion-icon>
-        </ion-card-header> 
-    
-         
-            <ion-row class="barraFeed">
-              <ion-col >
-                  <button ion-button icon-start clear small (click)="goEdite(feed)">
-                    <ion-icon name="create"></ion-icon>
-                    <div>Editar</div>
-                  </button>
-              </ion-col>
-              <ion-col>
-                  <button ion-button icon-start clear small>
-                    <ion-icon name="trash" (click)="deletar(feed)"></ion-icon>
-                    <div>Remover</div>
-                  </button>
-              </ion-col>
-            </ion-row>
-      </ion-card>
+  <!--inputs-->
+    <ion-content class="inputsfeed">
+      <ion-list >
+        <ion-item>
+          <ion-input type="text" color="dark" [(ngModel)]="feed.titulo" placeholder="Título da Feed"></ion-input>
+        </ion-item>
+      </ion-list>
+      <button *ngIf="!editandofeed" ion-button block color="dark" round (click)="adicionarFeed()">Adicionar</button>
+      <button *ngIf="editandofeed" ion-button  class="btn1" color="dark" round (click)="atualizarFeed()">Atualizar</button>
+      <button *ngIf="editandofeed" ion-button  class="btn1" color="dark" round (click)="cancelarEditacaoFeed()">Cancelar</button>
     </ion-content>
-
-
-  <ion-fab bottom right class="icone">
-    <button ion-fab color="dark">
-        <ion-icon name="add"></ion-icon>
-    </button >
-      <ion-fab-list side="left" >     
-                  
-          <button ion-fab (click)="gocriarfeed()" ><ion-icon name="add"></ion-icon>
-          </button> <div> Feeds</div>
-        
-        <button ion-fab ><ion-icon name="person"></ion-icon>
-        </button><div >Criar Feed</div>
-      </ion-fab-list>
-  </ion-fab>
-
-
-
+    <!--conteúdo--> 
+    <ion-content class="cards">
+      <ion-card *ngFor="let feed of feeds" >          
+          <ion-card-header class="barratitulo" (click)="goPost()" text-center>
+            <ion-icon name="arrow-dropright-circle" class="iconeseta"></ion-icon>
+            {{feed.titulo}}
+          </ion-card-header>
+           <ion-row class="barraFeed">
+                <ion-col >
+                    <button ion-button icon-start clear small color="light" (click)="editarFeed(feed)">
+                      <ion-icon name="create"></ion-icon>
+                      <div>Editar</div>
+                    </button>
+                </ion-col>
+                <ion-col>
+                    <button *ngIf="editandofeed" ion-button icon-start clear small color="light"  (click)="deletarFeed(feed)">
+                      <ion-icon name="trash" ></ion-icon>
+                      <div>Remover</div>
+                    </button>
+                </ion-col>
+              </ion-row>
+        </ion-card>
+      </ion-content>    
 </ion-content>

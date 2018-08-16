@@ -1,15 +1,13 @@
 import { NgModule } from '@angular/core';
 import { IonicPageModule } from 'ionic-angular';
-import { CriarFeedPage } from './criar-feed';
-
+import { PostPage } from './post';
 
 @NgModule({
   declarations: [
-    CriarFeedPage,
+    PostPage,
   ],
   imports: [
-    IonicPageModule.forChild(CriarFeedPage),
+    IonicPageModule.forChild(PostPage),
   ],
-
 })
-export class CriarFeedPageModule {}
+export class PostPageModule {}

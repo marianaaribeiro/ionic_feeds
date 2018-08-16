@@ -1,12 +1,12 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
-import { CriarFeedPage } from '../criar-feed/criar-feed';
 import { Storage } from '@ionic/storage';
 import { FeedsProvider } from '../../providers/feeds/feeds';
+import { PostPage } from '../post/post';
 
 
 interface IFeed{
-  titulo:any;
+  titulo:string;
 }
 
 @Component({
@@ -15,20 +15,20 @@ interface IFeed{
 })
 export class HomePage {
   
-  feed:IFeed = {titulo:''}
-  lista:IFeed[];
-  editandoFeed: boolean = false;
-  key:any = "lista";
- 
-  //cadastroTituloFeed:any;
+  
+  feed:IFeed = {titulo:''};
+  feeds:IFeed[];
+  editandofeed:boolean = false;
+  feedEditando:IFeed;
+  lista:any[];
+  key:string = "feeds";
 
   constructor(public navCtrl: NavController,
               public navParams: NavParams,
-              public storage: Storage,
-              public feedsProvider: FeedsProvider,
-              ) {
+              public feedProvider:FeedsProvider,
+              public storage: Storage) {
                 this.storage.ready().then(() =>{
-                  storage.get(this.key).then((dadosFeeds) => {
+                  this.storage.get(this.key).then((dadosFeeds) => {
                     if(dadosFeeds){
                       this.lista = dadosFeeds;
                     }else {
@@ -36,38 +36,50 @@ export class HomePage {
                     }
                   })      
                 })   
-     
-
-  }
-  ionViewDidLoad() {
-    this.lista = this.feedsProvider.listar();
   }
 
-  goEdite(feed:IFeed){
-    
-    this.feed = {titulo:this.feed};
-    this.editandoFeed = false;
-   
-    if( this.feed != {titulo: feed.titulo} &&  this.editandoFeed == false){      
-     
-     this.navCtrl.setRoot(CriarFeedPage,{
-      editandoFeed: true,
-     }); 
-     console.log(feed)     
+  ionViewDidEnter() {
+    this.feeds = this.feedProvider.listar();
+  }
+
+  adicionarFeed(){
+    if(this.feed.titulo != ""){
+      this.feedProvider.adicionar(this.feed);
+      this.feed = {titulo:''};
     }else{
-      alert("Não foi possível editar no momento. Tente mais tarde");
+      alert("Preencher campo obrigatório: Titulo da Feed")
+    }
+
+  }
+
+  editarFeed(feed:IFeed){
+    this.feed = {titulo:feed.titulo};
+    this.editandofeed = true;
+    this.feedEditando = feed;
+  }
+  cancelarEditacaoFeed(){
+    this.feed = {titulo:''};
+    this.editandofeed = false;
+  }
+  atualizarFeed(){
+    if(this.feed.titulo != ""){
+      this.feedProvider.atualizar(this.feedEditando,this.feed);
+      this.cancelarEditacaoFeed();
+    }
+  }
+
+  deletarFeed(feed:IFeed){
+    if(this.feed.titulo != ""){
+      this.feedProvider.deletar(feed);
+      this.feed = {titulo:''};
+      this.editandofeed = false;
+    }else{
+      alert("Não foi possível remover no momento. Tente mais tarde!")
     }
     
-    
   }
-  deletar(feed:IFeed){
-    this.feedsProvider.deletarFeed(feed);
-    console.log(feed);
-  }
-  gocriarfeed(){
-    this.navCtrl.setRoot(CriarFeedPage)
-  }
-  
 
-
+  goPost(){
+    this.navCtrl.push(PostPage);
+  }
 }
