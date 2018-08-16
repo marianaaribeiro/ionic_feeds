@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, ViewController } from 'ionic-angular';
+import { NavController, NavParams, ViewController } from 'ionic-angular';
 import { Storage } from '@ionic/storage';
 import { FeedsProvider } from '../../providers/feeds/feeds';
 import { PostPage } from '../post/post';
@@ -8,7 +8,7 @@ import { PostPage } from '../post/post';
 interface IFeed{
   titulo:string;
 }
-@IonicPage()
+
 @Component({
   selector: 'page-home',
   templateUrl: 'home.html'
