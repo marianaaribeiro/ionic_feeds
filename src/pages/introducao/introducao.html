@@ -1,0 +1,22 @@
+<ion-content>
+    <ion-slides pager>
+
+        <ion-slide style="background-color:rgba(224, 231, 229, 0.507)">
+          <h2 text-center>Bem Vindo!</h2>
+          <p text-justify style="margin: 20px; margin-top: 30px; margin-bottom: 30px">
+            Com esse aplicativo você sera capaz de guardar e salvar suas histórias mais incríveis.
+          </p>
+          <button ion-button block outline color="dark" round (click)="goFeed()">Pular</button>
+        </ion-slide>      
+        <ion-slide style="background-color:rgba(224, 231, 229, 0.507)">
+          <h2>Como usar?</h2>
+          <p text-justify style="margin: 25px; margin-top: 30px; margin-bottom: 30px">
+            Você pode cadastrar suas feeds de notícias separando por categoria e para cadastrar o seu conteúdo, basta clicar no card de cada feed para navegar em outra tela, onde vai criar o seu post, relacionado ao título da feed cadastrada anteriormente. Caso tenha digitado errado, poderar edita-lo, mas para remover basta clicar em editar que a opção de remover estará disponível.
+          </p>
+        </ion-slide>      
+        <ion-slide style="background-color:rgba(224, 231, 229, 0.507)">
+          <h2 style=" margin-bottom: 30px">Vamos começar a usar?</h2>
+          <button ion-button block color="dark" round (click)="goFeed()">Entrar</button>
+        </ion-slide>      
+      </ion-slides>
+</ion-content>

@@ -7,6 +7,14 @@
 </ion-header>
 
 <ion-content >
+    <ion-refresher (ionRefresh)="doRefresh($event)">
+        <ion-refresher-content
+          pullingIcon="arrow-dropdown"
+          pullingText="Pull to refresh"
+          refreshingSpinner="circles"
+          refreshingText="Atualizando...">
+        </ion-refresher-content>
+    </ion-refresher>    
   <!--inputs-->
     <ion-content class="inputsfeed">
       <ion-list >

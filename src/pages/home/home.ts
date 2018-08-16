@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController, NavParams } from 'ionic-angular';
+import { NavController, NavParams, ViewController } from 'ionic-angular';
 import { Storage } from '@ionic/storage';
 import { FeedsProvider } from '../../providers/feeds/feeds';
 import { PostPage } from '../post/post';
@@ -22,29 +22,46 @@ export class HomePage {
   feedEditando:IFeed;
   lista:any[];
   key:string = "feeds";
+  noFeed:string = "Não tem feed";
 
   constructor(public navCtrl: NavController,
+              public viewCtrl: ViewController,
               public navParams: NavParams,
               public feedProvider:FeedsProvider,
               public storage: Storage) {
-                this.storage.ready().then(() =>{
-                  this.storage.get(this.key).then((dadosFeeds) => {
-                    if(dadosFeeds){
-                      this.lista = dadosFeeds;
-                    }else {
+                this.storage.ready().then(()=>{
+                  this.storage.get(this.key).then((dadosfeeds) => {
+                    if(dadosfeeds){
+                      this.lista = dadosfeeds;
+                    }else{
                       this.lista = [];
                     }
-                  })      
-                })   
+                  });
+            
+                });
+                   
+  }
+
+  doRefresh(lista) {
+    console.log('Begin async operation', lista);
+
+    setTimeout(() => {
+      this.viewCtrl._didEnter();
+      lista.complete();
+    }, 2000);
+  }
+  ionViewDidLoad(){
+   this.lista;
   }
 
   ionViewDidEnter() {
-    this.feeds = this.feedProvider.listar();
+    this.feeds = this.feedProvider.listar();    
   }
 
   adicionarFeed(){
     if(this.feed.titulo != ""){
       this.feedProvider.adicionar(this.feed);
+      this.viewCtrl._didEnter();
       this.feed = {titulo:''};
     }else{
       alert("Preencher campo obrigatório: Titulo da Feed")
@@ -78,7 +95,6 @@ export class HomePage {
     }
     
   }
-
   goPost(){
     this.navCtrl.push(PostPage);
   }

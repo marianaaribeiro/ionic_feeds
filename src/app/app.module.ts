@@ -11,6 +11,7 @@ import { HomePage } from '../pages/home/home';
 import { FeedsProvider } from '../providers/feeds/feeds';
 import { PostpvProvider } from '../providers/postpv/postpv';
 import { PostPage } from '../pages/post/post';
+import { IntroducaoPage } from '../pages/introducao/introducao';
 
 
 
@@ -20,6 +21,7 @@ import { PostPage } from '../pages/post/post';
     MyApp,
     HomePage,
     PostPage,
+    IntroducaoPage,
     
   
   ],
@@ -38,6 +40,7 @@ import { PostPage } from '../pages/post/post';
     MyApp,
     HomePage,
     PostPage,
+    IntroducaoPage,
   ],
   providers: [
     StatusBar,
